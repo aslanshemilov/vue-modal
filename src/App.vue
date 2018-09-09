@@ -1,28 +1,30 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <button @click="open = !open">SHOW MODAL</button>
+    <modal @close="open = !open" :open="open">
+      <template slot="body">
+        <h1>THIS IS THE NEW HEADER FROM THE APP</h1>
+      </template>
+    </modal>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Modal from '@/components/Modal.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    Modal
+  },
+  data: () => ({
+    open: false
+  })
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+button {
+  padding: 30px 60px;
 }
 </style>
